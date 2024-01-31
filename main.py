@@ -85,7 +85,7 @@ class Planner:
 
 
 def main():
-    planner = Planner()  # Call Planner class by creating object
+    planner = Planner()
 
     while True:
         print("1. Add Event")
