@@ -1,8 +1,9 @@
-#
+# Junior Developer Challenge
+# By Felleng Lehula
 import datetime
 
 print(
-    "Hi. Welcome to Planner, a python application that allows you to plan ahead."
+    "Hi. Welcome to Event Planner, a python application that allows you to plan ahead."
     "\nTo get started, enter one of the options below:\n")
 
 
@@ -26,33 +27,32 @@ class Planner:
         if not all(isinstance(x, str) for x in [title, description, date, time]):
             print("Invalid input! Please try again.\n")
             return
-            # If the input of all the parameters is not in string format, display an error message
 
         try:
             event = Event(title, description, date, time)
-            self.events.append(event)  # append function add the created event to the list.
+            self.events.append(event)  # append function to add the created event to the list.
             self.events.sort(key=lambda x: (x.date, x.time))  # sort events after they are added to the list
             print("Event added successfully.\n")
 
         except ValueError:
             print("Invalid date or time format.\n")
 
-# A search function to search for events by title
+    # A search function to search for events by title
     def search(self, title):
-        for event in self.events: # Loops through the events list to find event with matching title to one in the search
+        for event in self.events:  # Loops through the events list to find event with matching title to one in the search
             if title == event.title:
                 print(event)
+    print("Event not found")
 
-        print("Event not found")
-
-# A function to view all events
+    # A function to view all events
     def view(self):
         if not self.events:
             print("No events scheduled.\n")
             return
         for event in self.events:
             print(event)  # Print the events found in the events list
-#A function to delete an event
+
+    # A function to delete an event
     def delete(self, title):
         try:
             event_index = next(i for i, x in enumerate(self.events) if x.title == title)
@@ -61,7 +61,9 @@ class Planner:
         except StopIteration:
             print("No event with this title exists.\n")
 
-# A function to edit details of an event, does not edit the title
+    # A function to edit details of an event, does not edit the title
+
+    # Skip the areas you do not wish to edit by pressing enter
     def edit_event(self, title, description=None, date=None, time=None):
         for i, event in enumerate(self.events):
             if event.title == title:
